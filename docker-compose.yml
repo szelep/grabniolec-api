@@ -1,0 +1,52 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: '3.1'
+services:
+    postgres:
+        image: 'postgres:15-alpine'
+        working_dir: /application
+        volumes:
+            - '.:/application'
+        environment:
+            - POSTGRES_USER=user
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_DB=app
+        ports:
+            - '62004:5432'
+        networks:
+            - mock
+
+    webserver:
+        image: 'nginx:alpine'
+        working_dir: /application
+        volumes:
+            - '.:/application'
+            - './phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+        ports:
+            - '62000:80'
+        networks:
+            - mock
+
+    php-fpm:
+        build: phpdocker/php-fpm
+        working_dir: /application
+        volumes:
+            - '.:/application'
+            - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.3/fpm/conf.d/99-overrides.ini'
+        networks:
+            - mock
+        environment:
+         - DATABASE_DRIVER=pgsql
+         - DATABASE_HOST=postgres
+         - DATABASE_PORT=5432
+         - DATABASE_NAME=app
+         - DATABASE_USER=user
+         - DATABASE_PASSWORD=password
+         - DATABASE_CHARSET=utf-8
+         - DATABASE_SERVER_VERSION=15
+
+networks:
+  mock:
+    driver: bridge
+    external: true

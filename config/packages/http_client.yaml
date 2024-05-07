@@ -1,0 +1,6 @@
+http_client:
+    rest_clients:
+        spotify_auth:
+            host: https://accounts.spotify.com/
+        spotify_api:
+            host: https://api.spotify.com/
