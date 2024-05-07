@@ -35,7 +35,7 @@ final readonly class OauthCallbackAction
 
         $redirectUrl = sprintf(
             '%s/session/%s/confirmation',
-            'http://api.grabniolec.pl',
+            'http://grabniolec.pl',
             $state
         );
 
