@@ -3,8 +3,10 @@ api_platform:
     version: 1.0.0
     mapping:
         paths:
-            - '%kernel.project_dir%/src/BoundedContext/Infrastructure/Request'
-            - '%kernel.project_dir%/src/Spotify/Infrastructure/Request'
+            - '%kernel.project_dir%/src/Session/Infrastructure/ApiPlatform/Resource'
+            - '%kernel.project_dir%/src/Spotify/Infrastructure/ApiPlatform/Resource'
+            - '%kernel.project_dir%/src/Lyrics/Infrastructure/ApiPlatform/Resource'
+            - '%kernel.project_dir%/src/Vote/Infrastructure/ApiPlatform/Resource'
     formats:
         jsonld: ['application/ld+json', 'application/json']
     docs_formats:
@@ -22,3 +24,5 @@ api_platform:
     keep_legacy_inflector: false
     exception_to_status:
         Webmozart\Assert\InvalidArgumentException: 400
+        App\Spotify\Domain\Exception\XStateHeaderRequiredException: 400
+        App\Spotify\Domain\Exception\UnauthorizedException: 401

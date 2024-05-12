@@ -22,12 +22,24 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App:
+            Session:
                 type: attribute
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/BoundedContext/Domain/Entity'
-                prefix: 'App\BoundedContext\Domain\Entity'
-                alias: App\BoundedContext\Domain\Entity
+                dir: '%kernel.project_dir%/src/Session/Domain/Entity'
+                prefix: 'App\Session\Domain\Entity'
+                alias: App\Session\Domain\Entity
+            Lyrics:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Lyrics/Domain/Entity'
+                prefix: 'App\Lyrics\Domain\Entity'
+                alias: App\Lyrics\Domain\Entity
+            Vote:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Vote/Domain/Entity'
+                prefix: 'App\Vote\Domain\Entity'
+                alias: App\Vote\Domain\Entity
         controller_resolver:
             auto_mapping: true
 

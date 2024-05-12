@@ -1,6 +1,10 @@
 http_client:
     rest_clients:
+        session_service:
+            host: '%env(SESSION_SERVICE_URL)%'
+        spotify_service:
+            host: '%env(SPOTIFY_SERVICE_URL)%'
         spotify_auth:
-            host: https://accounts.spotify.com/
+            host: '%env(SPOTIFY_AUTH_API_URL)%'
         spotify_api:
-            host: https://api.spotify.com/
+            host: '%env(SPOTIFY_API_URL)%'
