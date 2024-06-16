@@ -29,7 +29,7 @@ final readonly class FetchAndSaveLyricsCommandHandler
             return;
         }
 
-        $songDetails = $this->spotifyGateway->fetchSongDetailsById($command->songId);
+        $songDetails = $this->spotifyGateway->fetchTrackDetailsById($command->songId);
         $scrapedLyricsText = $this->scrapLyrics($songDetails->fullTitle);
         $lyrics->setStatus(Status::NotFound);
         if (null !== $scrapedLyricsText) {

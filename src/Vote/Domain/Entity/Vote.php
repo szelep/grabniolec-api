@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Vote\Domain\Entity;
 
 use App\Vote\Domain\Repository\VoteRepositoryInterface;
+use App\Vote\Infrastructure\EventListener\OnVoteDoneListener;
 use App\Vote\Infrastructure\Validator\UniqueVote;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,7 +17,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     schema: 'vote'
 )]
 #[ORM\Index('idx_songId_voteResult', ['song_id', 'vote_result'])]
-#[UniqueVote]
 class Vote
 {
     #[ORM\Id]

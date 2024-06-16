@@ -14,7 +14,6 @@ interface VoteRepositoryInterface
 {
     public function save(Vote $vote): void;
     public function getById(VoteId $voteId): Vote;
-    public function exists(Vote $vote): bool;
     public function findBySongAndClient(SongId $songId, ClientId $clientId): ?Vote;
     public function getCountsBySongId(SongId $songId): VoteCounts;
 }

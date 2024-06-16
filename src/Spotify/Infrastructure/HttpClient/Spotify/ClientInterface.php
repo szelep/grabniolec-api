@@ -15,4 +15,5 @@ interface ClientInterface
     public function fetchCurrentUser(string $state): User;
     public function fetchCurrentPlayback(string $state): ?Playback;
     public function fetchTrack(string $state, string $songId): ?Track;
+    public function skipTrack(string $state, string $deviceId): void;
 }

@@ -11,6 +11,7 @@ use App\Spotify\Infrastructure\HttpClient\Spotify\Request\GetCurrentPlaybackRequ
 use App\Spotify\Infrastructure\HttpClient\Spotify\Request\GetCurrentUserRequest;
 use App\Spotify\Infrastructure\HttpClient\Spotify\Request\GetTokenFromCodeRequest;
 use App\Spotify\Infrastructure\HttpClient\Spotify\Request\GetTrackRequest;
+use App\Spotify\Infrastructure\HttpClient\Spotify\Request\SkipTrackRequest;
 use App\Spotify\Infrastructure\HttpClient\Spotify\Response\Playback;
 use App\Spotify\Infrastructure\HttpClient\Spotify\Response\Track;
 use App\Spotify\Infrastructure\HttpClient\Spotify\Response\User;
@@ -117,5 +118,11 @@ final readonly class SpotifyClient implements ClientInterface
     private function getCredentials(string $state): CredentialsInterface
     {
         return $this->credentialsStorage->get($state) ?? throw UnauthorizedException::withState($state);
+    }
+
+    public function skipTrack(string $state, string $deviceId): void
+    {
+        $credentials = $this->getCredentials($state);
+        $response = $this->spotifyApiClient->request(new SkipTrackRequest($credentials->getAccessToken(), $deviceId));
     }
 }

@@ -38,11 +38,6 @@ final class VoteRepository extends ServiceEntityRepository implements VoteReposi
         return $this->find((string) $voteId) ?? throw EntityNotFoundException::fromClassNameAndIdentifier(Vote::class, ['id' => $voteId]);
     }
 
-    public function exists(Vote $vote): bool
-    {
-        return $this->findBySongAndClient($vote->getSongId(), $vote->getClientId()) !== null;
-    }
-
     public function findBySongAndClient(SongId $songId, ClientId $clientId): ?Vote
     {
         return $this->findOneBy([
