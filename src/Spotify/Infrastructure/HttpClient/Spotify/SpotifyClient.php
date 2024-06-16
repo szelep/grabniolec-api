@@ -123,6 +123,6 @@ final readonly class SpotifyClient implements ClientInterface
     public function skipTrack(string $state, string $deviceId): void
     {
         $credentials = $this->getCredentials($state);
-        $response = $this->spotifyApiClient->request(new SkipTrackRequest($credentials->getAccessToken(), $deviceId));
+        $this->spotifyApiClient->request(new SkipTrackRequest($credentials->getAccessToken(), $deviceId));
     }
 }
