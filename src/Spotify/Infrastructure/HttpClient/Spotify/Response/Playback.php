@@ -14,8 +14,6 @@ final readonly class Playback implements \Stringable
         /** @var Artist[] $artists */
         #[SerializedPath('[item][artists]')]
         public array $artists,
-        #[SerializedPath('[context][uri]')]
-        public string $contextUri,
         #[SerializedPath('[item][album][images][1][url]')]
         public string $imageUrl,
         #[SerializedPath('[item][id]')]
